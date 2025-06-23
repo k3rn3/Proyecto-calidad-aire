@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>7.0</version>
+    <template_groups>
+        <template_group>
+            <uuid>219d177afab34e0e8e62099e4f13ed06</uuid>
+            <name>Templates/Sensores</name>
+        </template_group>
+    </template_groups>
+    <templates>
+        <template>
+            <uuid>97813eabf0494301969814fee189cb64</uuid>
+            <template>Template Meteogalicia</template>
+            <name>Template Meteogalicia</name>
+            <groups>
+                <group>
+                    <name>Templates/Sensores</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>2c1f3f91bb574254adf47bbd93e9906c</uuid>
+                    <name>Humedad-Meteogalicia</name>
+                    <type>TRAP</type>
+                    <key>humedad.meteogalicia</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                </item>
+                <item>
+                    <uuid>cce0bf6351844097aec8bd6691253bd2</uuid>
+                    <name>NOX-Meteogalicia</name>
+                    <type>TRAP</type>
+                    <key>nox.meteogalicia</key>
+                    <delay>0</delay>
+                </item>
+                <item>
+                    <uuid>f287a815833f405d91f911ec2f5608f1</uuid>
+                    <name>PM-Meteogalicia</name>
+                    <type>TRAP</type>
+                    <key>pm.meteogalicia</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>µg/m³</units>
+                </item>
+                <item>
+                    <uuid>cc112a35161b4a178a47c807a8f9e821</uuid>
+                    <name>Temperatura-Meteogalicia</name>
+                    <type>TRAP</type>
+                    <key>temperatura.meteogalicia</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>ºC</units>
+                </item>
+            </items>
+        </template>
+        <template>
+            <uuid>a5a6bc376a894474b4dafbdcae8d28a5</uuid>
+            <template>Template Sen55</template>
+            <name>Template Sen55</name>
+            <groups>
+                <group>
+                    <name>Templates/Sensores</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>bd896f8aa16149d89371b6b4adb575ea</uuid>
+                    <name>Humedad</name>
+                    <type>TRAP</type>
+                    <key>sensor.humedad</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <triggers>
+                        <trigger>
+                            <uuid>6bb42ad3a9ed421c854f6c5d629b21ee</uuid>
+                            <expression>last(/Template Sen55/sensor.humedad)&lt;20 or last(/Template Sen55/sensor.humedad)&gt;80</expression>
+                            <name>Humedad fuera de rango</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>59602ab12a6e471da22e801acd8925c6</uuid>
+                    <name>NOX</name>
+                    <type>TRAP</type>
+                    <key>sensor.nox_index</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <triggers>
+                        <trigger>
+                            <uuid>71966b205b9e4ef2b1c2e95dba122a68</uuid>
+                            <expression>last(/Template Sen55/sensor.nox_index)&gt;100</expression>
+                            <name>NOX fuera de rango</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>e20e13f1e36b454fa702bcb76ace5ba6</uuid>
+                    <name>PM1.0</name>
+                    <type>TRAP</type>
+                    <key>sensor.pm1_0</key>
+                    <delay>0</delay>
+                    <units>µg/m³</units>
+                </item>
+                <item>
+                    <uuid>3c23a08a7d854f68a1fc605b452ea5c9</uuid>
+                    <name>PM2.5</name>
+                    <type>TRAP</type>
+                    <key>sensor.pm2_5</key>
+                    <delay>0</delay>
+                    <units>µg/m³</units>
+                </item>
+                <item>
+                    <uuid>b914ecf1bbc44fe6a0011a27350972f0</uuid>
+                    <name>PM4.0</name>
+                    <type>TRAP</type>
+                    <key>sensor.pm4_0</key>
+                    <delay>0</delay>
+                    <units>µg/m³</units>
+                </item>
+                <item>
+                    <uuid>8441804f2c0940b2be90101f8da907b3</uuid>
+                    <name>PM10.0</name>
+                    <type>TRAP</type>
+                    <key>sensor.pm10_0</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>µg/m³</units>
+                    <triggers>
+                        <trigger>
+                            <uuid>4ac14b4ec6a74017886a9d6d30a9bdf1</uuid>
+                            <expression>last(/Template Sen55/sensor.pm10_0)&gt;100</expression>
+                            <name>ICA fuera de rango</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>2c5ce7e21c7a489ab1af60b6609f14be</uuid>
+                    <name>Temperatura</name>
+                    <type>TRAP</type>
+                    <key>sensor.temperatura</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>ºC</units>
+                    <triggers>
+                        <trigger>
+                            <uuid>dda228fc99654b5a84ae437d17ab1b8e</uuid>
+                            <expression>last(/Template Sen55/sensor.temperatura)&lt;10 or last(/Template Sen55/sensor.temperatura)&gt;27</expression>
+                            <name>Temperatura fuera de rango</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>72dc7d22abf542e3a9bebc68b732c616</uuid>
+                    <name>VOC</name>
+                    <type>TRAP</type>
+                    <key>sensor.voc_index</key>
+                    <delay>0</delay>
+                    <value_type>FLOAT</value_type>
+                    <triggers>
+                        <trigger>
+                            <uuid>3e46175ab7204305a77ead6024938270</uuid>
+                            <expression>last(/Template Sen55/sensor.voc_index)&gt;200</expression>
+                            <name>VOC fuera de rango</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+        </template>
+    </templates>
+</zabbix_export>
